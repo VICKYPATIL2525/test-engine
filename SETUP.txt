@@ -51,10 +51,19 @@ WHAT THIS TOOL DOES:
   STEP 3 — INSTALL DEPENDENCIES
 ----------------------------------------------------------------
 
-  pip install -r requirements.txt
+  Full install (recommended — includes git extraction):
+    pip install -r requirements.txt
 
-  (If you want a lighter install, use requirements-minimal.txt
-   instead, but some features may not be available.)
+  Packages installed:
+    streamlit, openai, langchain-openai, langchain-core,
+    gitpython, python-dotenv
+
+  Minimal install (only run strapp.py / app.py, no git extraction):
+    pip install -r requirements-minimal.txt
+
+  Packages installed:
+    streamlit, openai, langchain-openai, langchain-core,
+    python-dotenv
 
 ----------------------------------------------------------------
   STEP 4 — CONFIGURE ENVIRONMENT VARIABLES
@@ -67,14 +76,24 @@ WHAT THIS TOOL DOES:
 
   Then open .env in any text editor and fill in:
 
+    # Azure OpenAI (required)
     OPENAI_API_KEY=<your Azure OpenAI API key>
     AZURE_OPENAI_ENDPOINT=https://<your-resource>.openai.azure.com/
     AZURE_OPENAI_VERSION=2024-12-01-preview
+    AZURE_OPENAI_DEPLOYMENT=gpt-4.1-mini
+
+    # GitHub (required for git_extractor.py)
     GITHUB_TOKEN=<your GitHub personal access token>
     REPO_URL=https://github.com/<org>/<repo>.git
 
-  IMPORTANT: Never commit your .env file. It is already in
-  .gitignore so it will not be uploaded to GitHub.
+    # Extraction settings (optional, defaults shown)
+    MAX_COMMITS=50
+    SHALLOW_CLONE=True
+    TIME_RANGE_DAYS=30
+
+  NOTE: Your team lead will share the actual credentials with you
+  directly. Do NOT commit your .env file — it is already listed
+  in .gitignore and will not be uploaded to GitHub.
 
 ----------------------------------------------------------------
   STEP 5 — PULL REPOSITORY DATA (git_extractor.py)
@@ -175,8 +194,9 @@ WHAT THIS TOOL DOES:
     -> Run git_extractor.py first (Step 5)
 
   "Missing credentials in .env"
-    -> Make sure your .env file exists and has all 3 Azure fields:
-       OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_VERSION
+    -> Make sure your .env file exists and has all 4 Azure fields:
+       OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_VERSION,
+       AZURE_OPENAI_DEPLOYMENT
 
   "No test reports found in html-reports/"
     -> Create the html-reports/ folder and add .html files (Step 6)
