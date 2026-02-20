@@ -1,0 +1,38 @@
+# Environment variables and config
+.env
+config.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+myenv/
+venv/
+env/
+ENV/
+
+# Extracted data
+pulled_data/
+temp_repos/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large generated/output files
+llm_analysis.json
+html-reports/
+SparkReports*/
+
+# Claude Code settings
+.claude/
