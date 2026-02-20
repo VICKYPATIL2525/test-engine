@@ -1,13 +1,6 @@
-# Minimal Requirements for Azure OpenAI Test Analysis Engine
-# Last updated: February 12, 2026
-
-# Core Azure OpenAI Integration
+# ── Minimal: run strapp.py and app.py only (no git extraction) ─
+streamlit>=1.32.0
 openai>=1.12.0
-langchain-openai>=0.0.5
+langchain-openai>=0.1.0
 langchain-core>=0.1.0
-
-# Environment Configuration
 python-dotenv>=1.0.0
-
-# Optional: Git Extraction (uncomment if extracting new repositories)
-# gitpython>=3.1.40
